@@ -6,36 +6,16 @@ Academic Control System - Lab 02 Programming Lab 2 (UFCG). Java system for basic
 
 Simple `CLI` app in pure Java to practice `OOP` basics: classes, objects, encapsulation, `toString` and `javadoc`. `CoISA.java` is the entry point testing all features.
 
-This is the full English translation of [LAB02](https://github.com/juliovlpsp-commits/LAB02).
+## classes
 
-## class mapping (PT -> EN)
-
-| original (PT) | english (EN) | description |
-|---|---|---|
-| `Descanso` | `Rest` | rest status (`rested` if `avg >=26h/week` else `tired`) |
-| `RegistroTempoOnline` | `OnlineTime` | online hours per course (`0/120` default, `30` custom) |
-| `Disciplina` | `Course` | `4 grades` (avg `>=7` approved) + weighted average support |
-| `Resumo` | `Summary` | data object `topic: content` |
-| `RegistroResumos` | `SummaryRegistry` | circular buffer + sorted keyword `search` |
-
-## method mapping
-
-| PT | EN |
+| class | description |
 |---|---|
-| `defineHorasDescanso` | `setRestHours` |
-| `defineNumeroSemanas` | `setWeeks` |
-| `getStatusGeral` | `getStatus` |
-| `adicionaTempoOnline` | `addOnlineTime` |
-| `atingiuMetaTempoOnline` | `reachedGoal` |
-| `cadastraHoras` | `addHours` |
-| `cadastraNota` | `addGrade` |
-| `aprovado` | `isApproved` |
-| `adicionaResumo` | `addSummary` |
-| `pegaResumos` | `getSummaries` |
-| `contaResumos` | `countSummaries` |
-| `imprimeResumos` | `printSummaries` |
-| `temResumo` | `hasSummary` |
-| `busca` | `search` |
+| `Rest` | rest status (`rested` if `avg >=26h/week` else `tired`) |
+| `OnlineTime` | online hours per course (`0/120` default, `30` custom) and goal check |
+| `Course` | `4 grades` (avg `>=7` approved) + weighted average support and study hours |
+| `Summary` | data object `topic: content` |
+| `SummaryRegistry` | circular buffer collection with sorted keyword `search` |
+| `CoISA` | entry point with manual tests for all modules |
 
 ## technologies
 - `java 17+`
