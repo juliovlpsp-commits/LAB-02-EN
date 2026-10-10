@@ -1,8 +1,22 @@
 @startuml CoISA Lab02 EN
-' Lab02 - Stages 2 and 4 (UFCG) - English Version
+' Lab02 - Stages 2 and 4 (UFCG) - English Version - Dark Mode
 ' Render at https://plantuml.com/plantuml or export to png
 left to right direction
-skinparam classAttributeIconSize 0
+skinparam backgroundColor #121212
+skinparam shadowing false
+skinparam ArrowColor #BBBBBB
+skinparam ClassBackgroundColor #1E1E1E
+skinparam ClassBorderColor #3A3A3A
+skinparam ClassFontColor #E0E0E0
+skinparam ClassAttributeFontColor #E0E0E0
+skinparam ClassStereotypeFontColor #90CAF9
+skinparam ClassHeaderBackgroundColor #252525
+skinparam NoteBackgroundColor #2C2C2C
+skinparam NoteBorderColor #444444
+skinparam NoteFontColor #E0E0E0
+skinparam PackageBackgroundColor #1E1E1E
+skinparam PackageBorderColor #3A3A3A
+skinparam PackageFontColor #E0E0E0
 
 class Rest {
   - restHours : int
