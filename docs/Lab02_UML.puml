@@ -1,93 +1,91 @@
-@startuml CoISA Lab02
-Lab02 - Etapas 2 e 4 (UFCG)
-' Renderize em https://plantuml.com/plantuml ou exporte para png
+@startuml CoISA Lab02 EN
+' Lab02 - Stages 2 and 4 (UFCG) - English Version
+' Render at https://plantuml.com/plantuml or export to png
 left to right direction
 skinparam classAttributeIconSize 0
 
-class Descanso {
-  - horasDescanso : int
-  - numeroSemanas : int
-  + Descanso()
-  + defineHorasDescanso(valor: int) : void
-  + defineNumeroSemanas(valor: int) : void
-  + getStatusGeral() : String
+class Rest {
+  - restHours : int
+  - weeks : int
+  + Rest()
+  + setRestHours(value: int) : void
+  + setWeeks(value: int) : void
+  + getStatus() : String
 }
 
-class RegistroTempoOnline {
-  - nomeDisciplina : String
-  - tempoOnlineEsperado : int
-  - tempoOnlineGasto : int
-  + RegistroTempoOnline(nomeDisciplina: String)
-  + RegistroTempoOnline(nomeDisciplina: String, tempoOnlineEsperado: int)
-  + adicionaTempoOnline(tempo: int) : void
-  + atingiuMetaTempoOnline() : boolean
+class OnlineTime {
+  - courseName : String
+  - expectedTime : int
+  - spentTime : int
+  + OnlineTime(courseName: String)
+  + OnlineTime(courseName: String, expectedTime: int)
+  + addOnlineTime(time: int) : void
+  + reachedGoal() : boolean
   + toString() : String
 }
 
-class Disciplina {
-  - nomeDisciplina : String
-  - horas : int
-  - notas : double[]
-  - pesos : int[]
-  + Disciplina(nomeDisciplina: String)
-  + Disciplina(nomeDisciplina: String, numNotas: int)
-  + Disciplina(nomeDisciplina: String, numNotas: int, pesos: int[])
-  + cadastraHoras(horas: int) : void
-  + cadastraNota(nota: int, valorNota: double) : void
-  - calculaMedia() : double
-  + aprovado() : boolean
+class Course {
+  - courseName : String
+  - hours : int
+  - grades : double[]
+  - weights : int[]
+  + Course(courseName: String)
+  + Course(courseName: String, numGrades: int)
+  + Course(courseName: String, numGrades: int, weights: int[])
+  + addHours(hours: int) : void
+  + addGrade(grade: int, value: double) : void
+  - getAverage() : double
+  + isApproved() : boolean
   + toString() : String
 }
 
-class Resumo {
-  - tema : String
-  - conteudo : String
-  + Resumo(tema: String, conteudo: String)
-  + getTema() : String
-  + getConteudo() : String
+class Summary {
+  - topic : String
+  - content : String
+  + Summary(topic: String, content: String)
+  + getTopic() : String
+  + getContent() : String
   + toString() : String
 }
 
-class RegistroResumos {
-  - resumos : Resumo[]
-  - qtdResumos : int
-  - posAtual : int
-  + RegistroResumos(numeroDeResumos: int)
-  + adiciona(tema: String, conteudo: String) : void
-  + adicionaResumo(tema: String, conteudo: String) : void
-  + pegaResumos() : String[]
-  + conta() : int
-  + contaResumos() : int
-  + imprimeResumos() : String
-  + temResumo(tema: String) : boolean
-  + busca(chaveDeBusca: String) : String[]
+class SummaryRegistry {
+  - summaries : Summary[]
+  - count : int
+  - currentPos : int
+  + SummaryRegistry(capacity: int)
+  + addSummary(topic: String, content: String) : void
+  + getSummaries() : String[]
+  + countSummaries() : int
+  + printSummaries() : String
+  + hasSummary(topic: String) : boolean
+  + search(keyword: String) : String[]
 }
 
 class CoISA {
   + main(args: String[]) : void
-  + registrarDescanso() : void
-  - registrarTempoOnline() : void
-  - controlarDisciplina() : void
-  - registrarResumos() : void
+  + testRest() : void
+  - testOnlineTime() : void
+  - testCourse() : void
+  - testSummaries() : void
 }
 
-RegistroResumos "1" *-- "0..*" Resumo : contém >
-CoISA ..> Descanso : usa
-CoISA ..> RegistroTempoOnline : usa
-CoISA ..> Disciplina : usa
-CoISA ..> RegistroResumos : usa
+SummaryRegistry "1" *-- "0..*" Summary : contains >
+CoISA ..> Rest : uses
+CoISA ..> OnlineTime : uses
+CoISA ..> Course : uses
+CoISA ..> SummaryRegistry : uses
 
-note right of RegistroResumos
-  Buffer circular: ao encher
-  sobrescreve o mais antigo.
-  Tema duplicado é ignorado.
-  busca() é case-insensitive
-  e retorna ordenado.
+note right of SummaryRegistry
+  Circular buffer: when full
+  overwrites oldest entry.
+  Duplicate topic is ignored.
+  search() is case-insensitive
+  and returns sorted.
 end note
 
-note right of Disciplina
-  Etapa 4: média ponderada
-  se pesos != null
-  senão média aritmética
+note right of Course
+  Stage 4: weighted average
+  if weights != null
+  else arithmetic average
 end note
 @enduml
